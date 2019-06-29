@@ -1,0 +1,113 @@
+body {
+    font-family: 'Russo One', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #F2F1F3;
+    background-color: #010014;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "heading" 
+        "home"
+        "time"
+        "guest"
+        "shotclk";  
+    background-color: #010014;
+    row-gap: 1rem;
+    padding: 1rem;
+    letter-spacing: 0.1rem;
+}
+
+
+.lbl {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading {
+    grid-area: heading;
+    text-align: center;
+    letter-spacing: 0.2rem;
+}
+
+
+
+.time, .home, .guest, .shot-clk, .quarter{
+    text-align: center;
+    font-size: 4rem;
+    color: #FF3434;
+}
+
+
+.shot-clk, .quarter, .time {
+    font-size: 2.5rem;
+}
+
+
+.time-cont, .home-cont, .guest-cont, .shot-clk-cont, .quarter-cont {
+    background-color: #272831;
+    border-radius: 0.6rem;
+    padding: 0.4rem;
+}
+
+.home-cont {
+    grid-area: home; 
+}
+.time-cont {
+    grid-area: time; 
+}
+.guest-cont {
+    grid-area: guest; 
+}
+.shot-clk-cont {
+    grid-area: shot;
+
+}
+.quarter-cont {
+    grid-area: quarter;
+
+}
+
+.shot-clk-quarter-cont {
+    grid-area: shotclk;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+    "quarter shot";
+    column-gap: 0.5rem;
+    background-color: #010014;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+    .parent {
+        width: 50%;
+        margin: 1% 25%;
+    }
+}
+
+
+/* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+*/
+  
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    .parent {
+        width: 50%;
+        margin: 5% 25%;
+    }
+
+}
+
+

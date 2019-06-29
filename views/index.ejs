@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SCOREBOARD</title>
+    <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <div class="parent">
+
+        <div class="heading">
+            <h1><i class="fas fa-basketball-ball"></i> scoreboard</h1>
+        </div>
+        
+        
+        <div class="time-cont">
+            <div class="lbl"><i class="far fa-hourglass"></i> time</div>
+            <div class="time">12 : 00</div>
+        </div>
+
+
+        <div class="home-cont">
+            <div class="lbl"><i class="fas fa-crown"></i> home</div>
+            <div class="home">0</div>
+        </div>
+
+
+        <div class="guest-cont">
+            <div class="lbl"><i class="fas fa-bullseye"></i> guest</div>
+            <div class="guest">0</div>
+        </div>
+
+
+        <div class="shot-clk-quarter-cont">
+            <div class="shot-clk-cont">
+                <div class="lbl"><i class="fas fa-stopwatch"></i> shot clk</div>
+                <div class="shot-clk">24</div>
+            </div>
+        
+            <div class="quarter-cont">
+                <div class="lbl"><i class="fas fa-star-half"></i>quarter</div>
+                <div class="quarter">1</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        var socket = io.connect('https://jik-scoreboard.herokuapp.com/');
+
+        var shotclk = 24;
+
+        var homeScoreEl = document.querySelector('.home');
+        var guestScoreEl = document.querySelector('.guest');
+        var timeEl = document.querySelector('.time');
+        var quarterEl = document.querySelector('.quarter');
+        var shotclkEl = document.querySelector('.shot-clk');
+
+        socket.on('fromServer', (signal) => {
+            homeScoreEl.textContent = signal.homeScore;
+            guestScoreEl.textContent = signal.guestScore;
+            timeEl.textContent = signal.time;
+            quarterEl.textContent = signal.quarter;
+            shotclkEl.textContent = signal.shotClock;
+        })
+    </script>
+</body>
+</html>
