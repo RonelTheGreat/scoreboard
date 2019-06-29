@@ -1,1 +1,1 @@
-"# scoreboard" 
+SCOREBOARD
