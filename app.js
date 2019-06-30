@@ -27,16 +27,16 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/simulate', (req, res) => {
-    res.render('simulate');
-})
-
 io.on('connection', (socket) => {
     console.log('a client has connected');
 
     socket.on('fromController', (signal) => {
 
-        io.sockets.emit('fromServer', signal);
+        Sboard.findOneAndUpdate({_id: '5d185bda898cbc2034bdd3ab'}, signal, (err, scoreboard) => {
+            if (err) return console.log('Can\'t find instance of scoreboard ...');
+
+            io.sockets.emit('fromServer', scoreboard);
+        })        
     })
 })
 
