@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/simulate', (req, res) => {
+    res.render('simulate');
+})
+
 io.on('connection', (socket) => {
     console.log('a client has connected');
 
