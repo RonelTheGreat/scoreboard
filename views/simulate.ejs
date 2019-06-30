@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SIMULATOR</title>
+</head>
+<body>
+    
+    <script src="/socket.io/socket.io.js"></script>
+
+
+    <button class="start">START</button>
+    <button class="pause">PAUSE</button>
+
+    <script>
+        var socket = io.connect('https://jik-scoreboard.herokuapp.com/');
+        // var socket = io.connect('http://192.168.1.5:3000');
+
+        var startBtn = document.querySelector('.start');
+        var pauseBtn = document.querySelector('.pause');
+
+        let homeScore = 0;
+        let guestScore = 0;
+        let timerID;
+
+        startBtn.addEventListener('click', function() {
+            timerID = setInterval(function() {
+                homeScore++;
+                guestScore++;
+
+                let signal = {
+                    homeScore: homeScore,
+                    guestScore: guestScore,
+                    time: '12 : 00',
+                    quarter: '4',
+                    shotClock: '24' 
+                }
+                socket.emit('fromController', signal);
+                // console.log(signal.guestScore);
+            }, 1000);
+        })
+
+        pauseBtn.addEventListener('click', function(){
+            clearInterval(timerID);
+        })
+    </script>
+</body>
+</html>
