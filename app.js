@@ -21,9 +21,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 
 app.get('/', (req, res) => {
-    Sboard.find({}, (err, scoreboard) => {
+    Sboard.findOne({_id: '5d185bda898cbc2034bdd3ab'}, (err, scoreboard) => {
         if (err) return console.log('Can\'t find instance of scoreboard ...');
-        res.render('index', {scoreboard : scoreboard[0]}); 
+        res.render('index', {scoreboard : scoreboard}); 
     })
 })
 
