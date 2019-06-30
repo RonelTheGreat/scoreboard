@@ -23,7 +23,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 app.get('/', (req, res) => {
     Sboard.find({}, (err, scoreboard) => {
         if (err) return console.log('Can\'t find instance of scoreboard ...');
-        console.log(DB_URL);
         res.render('index', {scoreboard : scoreboard[0]}); 
     })
 })
