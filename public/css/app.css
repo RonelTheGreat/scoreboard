@@ -35,6 +35,10 @@ body {
     letter-spacing: 0.2rem;
 }
 
+.heading h1 i {
+    animation: rotateForever 1s linear infinite;
+}
+
 
 
 .time, .home, .guest, .shot-clk, .quarter{
@@ -110,4 +114,13 @@ body {
 
 }
 
+@keyframes rotateForever {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
